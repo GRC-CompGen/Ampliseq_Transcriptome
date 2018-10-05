@@ -1,8 +1,11 @@
 # Idiots_guides
+
 Basic linux commands for handling Ampliseq_transcriptome data
 
-##Create list of samples in specific directory
+## Create list of samples in specific directory
+```sh
 ls Cell/*.bam | sed -e 's/.bam//g' > cell_sample_list.txt 
+```
 
 ##Make fq directory# 
 mkdir Cell_fq
