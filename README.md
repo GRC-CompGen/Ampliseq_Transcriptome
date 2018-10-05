@@ -22,7 +22,9 @@ done < cell_sample_list.txt
 
 ### compress newly made fq files for easier analysis
 ```sh
-bgzip –i “${x}”.fq && tabix –p fq “${x}”.fq.gz
+while read x; do
+bgzip –i Cell_fq/“${x}”.fq && tabix –p fq Cell_fq/“${x}”.fq.gz
+done < cell_sample_list.txt
 ```
 
 ### make fastqc directory for samples
