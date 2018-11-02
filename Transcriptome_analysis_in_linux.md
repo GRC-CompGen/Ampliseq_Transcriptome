@@ -1,4 +1,4 @@
-# Idiots_Guide_for_Handling_AmpliSeq_Transciptome_Data
+# Handling_AmpliSeq_Transciptome_Data
 
 Basic linux commands for handling Ampliseq_transcriptome data
 
