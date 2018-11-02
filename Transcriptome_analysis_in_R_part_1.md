@@ -15,13 +15,13 @@ knitr::opts_chunk$set(echo = TRUE)
 require("BioCinstaller")
 ```
 
-###Downloading relevant Packages
+### Downloading relevant Packages
 
 This script requires R V3.5.1
 BiocInstaller::biocLite(c("tximport", "readr", "edgeR", "Homo.sapiens", "biomaRt", "qusage", "limma", "Glimma", "ChAMP"))
 
 
-##info
+## info
 
 This document outlines the necessary coding and steps to upload transcriptome Salmon Quant files into R using the TxImport package
 note: this setup requires that all quant files are in directory stucture `main_folder/2-Input/quants/sample_name_quant/quant.sf`
@@ -36,20 +36,20 @@ options(digits=3)
 getwd()
 ```
 
-####load required packages
+#### load required packages
 ```{r, include=FALSE}
 library(tximport)
 library(readr)
 ```
 
-##Using the tximport package to load the salmon quant files into R
-####tximport of pre-constructed tx2gene table - created from bioMart Ensembl site
+## Using the tximport package to load the salmon quant files into R
+#### tximport of pre-constructed tx2gene table - created from bioMart Ensembl site
 ```{R transcript to gene file, include=FALSE}
 tx2gene <- read.csv("H:/Transcriptome_R/2-Input/Homo_sapiens.GRCh38.91_tx2gene.csv")
 head(tx2gene, 5)
 ```
 
-####create links to salmon quant folders for import
+#### create links to salmon quant folders for import
 ```{R}
 folder <- c("H:/Transcriptome_R/2-Input/quants")
 salmon.dir <- as.matrix(read.csv(file="H:/Transcriptome_R/2-Input/quant_filenames.csv", sep=",", header=F))
@@ -61,7 +61,7 @@ all(file.exists(salmon.files))
 ```
 
 
-####tximport
+#### tximport
 countsFromAbundance default is "no" and just returns counts not Transcript Per Million (TPM). scaledTPM is TPM scaled up to library size while lengthScaledTPM first multiplies TPM by feature length and then scales up to library size. Both are then quantities that are on the same scale as original counts,except no longer correlated with feature length across samples.
 
 ```{R}
