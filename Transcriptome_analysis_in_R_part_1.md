@@ -253,7 +253,7 @@ hist(lcpm.AvgCounts, col="salmon", border="salmon",
 dev.off()
 ```
 
-####Heatmap of samples
+#### Heatmap of samples
 ```{R}
 png("3-QC/Sample heatmap.png", width = 60, height = 60, units = 'cm', res = 300)
 par(mfrow=c(1,2))
@@ -277,7 +277,7 @@ y.Norm$samples$norm.factors
 summary(y.Norm$samples$norm.factors)
 ```
 
-####boxplot BEFORE normalisation
+#### boxplot BEFORE normalisation
 ```{R}
 png("3-QC/Boxplots.png", width = 90, height = 45, units = 'cm', res = 300)
 par(mfrow=c(2,1))
@@ -336,7 +336,7 @@ plotMD(y.Filt, column=1, main="First sample (raw)"); abline(h=0, col="red", lty=
 plotMD(y.Norm, column=1, main="First sample (TMM-normalised)"); abline(h=0, col="red", lty=2, lwd=2)
 dev.off()
 ```
-#Important! Limma design matrix
+# Important! Limma design matrix
 At this point all transcripts have been mapped to genes, zero counts have been excluded from further analysis, and all remaining counts have been normalised across samples. The following design matrix is the most important step of this script because it is when we actually tell the program what to compare for gene expression changes. (the design below considers the "PRE" timepoint as the baseline (which is correct but only considers the question "what changes between timepoints for all samples whether they are responders or not"))
 
 ```{R}
@@ -366,7 +366,7 @@ library(ChAMP)
 pd <- v$targets[,c("sampleID","subject",
                    "timepoint","id","run_date")]
 colnames(pd)[1] <- "Sample_Names"
-champ.SVD(beta=v$E, pd=pd, PDFplot=TRUE, Rplot=FALSE, resultsDir="./3-QC/")
+champ.SVD(beta=v$E, pd=pd, PDFplot=TRUE, Rplot=FALSE, resultsDir="H:/Transcriptome_R/3-QC/")
 
 glMDSPlot(v, top=500, labels=v$targets$subject,
           groups=v$targets[,c(1:9)], launch=TRUE,
